@@ -66,17 +66,17 @@ def getCosts():
 
 		#Get the value
 		amount = project['Metrics']['BlendedCost']['Amount']
-		#Format the time to 0.2 points
+		#Format the amount to 2 decimal points
 		amount = "{0:.2f}".format(float(amount))
 
-		#Append the values in the directionary
+		#Append the values in the dictionary
 		projectValues[name] = float(amount)
 
 	#Return the dictionary with all those values
 	return projectValues
 
 
-#Start classe collector
+#Start class collector
 class costExporter(object):
 
 	def collect(self):
