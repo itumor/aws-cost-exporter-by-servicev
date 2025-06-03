@@ -7,11 +7,11 @@ import re
 import boto3
 import datetime
 
-#Try get the TAG_PROJECT env variable. If not defined, we will use the Scost
-tagProject = os.getenv('TAG_PROJECT','Scost')
-tagProject = 'sc:env'
-#Try get the PORT env variable. If not defined, we will use the 9150 
-port = os.getenv('PORT',9150)
+# Try get the TAG_PROJECT env variable. If not defined, use 'Scost'
+tagProject = os.getenv('TAG_PROJECT', 'Scost')
+#Try get the PORT env variable. If not defined, we will use the 9150
+#Ensure the result is always an integer
+port = int(os.getenv('PORT', '9150'))
 
 def getCosts():
 	#Create a boto3 connection with cost explorer
