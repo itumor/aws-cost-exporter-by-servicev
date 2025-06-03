@@ -2,7 +2,7 @@
 
 # Description
 
-This export will query AWS Cost Explorer API search by a specific tag. This is usefull for know costs of a specific project. All you need to do is run the docker with the env variables. The script will discovery and return the amount for each value founded on specified tag.
+This export will query AWS Cost Explorer API search by a specific tag. This is useful for know costs of a specific project. All you need to do is run the docker with the env variables. The script will discovery and return the amount for each value founded on specified tag.
 
 # Authentication
 
