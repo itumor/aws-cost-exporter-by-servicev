@@ -10,8 +10,8 @@ import datetime
 #Try get the TAG_PROJECT env variable. If not defined, we will use the Scost
 tagProject = os.getenv('TAG_PROJECT','Scost')
 tagProject = 'sc:env'
-#Try get the PORT env variable. If not defined, we will use the 9150 
-port = os.getenv('PORT',9150)
+# Try get the PORT env variable. If not defined, cast the default 9150 to int
+port = int(os.getenv('PORT', 9150))
 
 def getCosts():
 	#Create a boto3 connection with cost explorer
