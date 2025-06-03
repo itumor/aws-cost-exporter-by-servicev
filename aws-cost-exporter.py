@@ -9,7 +9,7 @@ import datetime
 
 #Try get the TAG_PROJECT env variable. If not defined, we will use the Scost
 tagProject = os.getenv('TAG_PROJECT', 'Scost')
-#Try get the PORT env variable. If not defined, we will use the 9150 
+#Try get the PORT env variable. If not defined, we will use the 9150
 port = int(os.getenv('PORT', '9150'))
 
 def getCosts():
@@ -19,10 +19,10 @@ def getCosts():
     #Get the current time
     now = datetime.datetime.utcnow()
 
-    # Set the end of the range to start of the current day 
+    # Set the end of the range to start of the current day
     end = datetime.datetime(year=now.year, month=now.month, day=now.day)
 
-    # Subtract a day to define the start of the range 
+    # Subtract a day to define the start of the range
     start = end - datetime.timedelta(days=30)
 
     # Convert them to strings
@@ -46,7 +46,7 @@ def getCosts():
                 'Key': 'SERVICE'
             },
         ]
-        
+
     )
     print (response)
     #Create an empty dictionary
@@ -87,7 +87,7 @@ class costExporter(object):
         #Create header
         metric = Metric('aws_project_cost','Total amount of costs for project','gauge')
         cost_metric = Gauge('aws_cost', 'AWS Cost by Service', ['service'])
-        
+
         #Run the retuned dictionary and expose the metrics
         for project,cost in getCosts().items():
             metric.add_sample('aws_project_cost',value=cost,labels={'project':project})
@@ -98,9 +98,9 @@ class costExporter(object):
 if __name__ == '__main__':
 
     start_http_server(port)
-        
+
     metrics = costExporter()
-    
+
     REGISTRY.register(metrics)
 
-    while True: time.sleep(1) 
+    while True: time.sleep(1)
